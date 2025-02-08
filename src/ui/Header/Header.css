@@ -1,0 +1,23 @@
+.header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.header button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.header button.active {
+  background-color: #ddd;
+}
+
+.header button:hover {
+  background-color: #e0e0e0;
+}
