@@ -10,14 +10,7 @@ const DateManager = () => {
   };
 
   return (
-    <div className="date-manager-container">
-      <h2>Выбор даты</h2>
-      <p>Текущая выбранная дата: {selectedDate?.toLocaleDateString() || "Не выбрана"}</p>
-      <ul>
-        {currentWeek.map((day, idx) => (
-          <li key={idx}>{day.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "short" })}</li>
-        ))}
-      </ul>
+    <div>
       <Calendar onDateSelect={handleDateSelect} initialDate={selectedDate} />
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import usePageStore from './stores/pagesStore';
 import Header from './ui/Header/Header';
+import useQueuesSlice from './stores/dataStore/slices/queueSlice';
 
 function App() {
   const { currentPage, setPage, pages } = usePageStore();
