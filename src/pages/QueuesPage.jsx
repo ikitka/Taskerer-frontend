@@ -1,5 +1,13 @@
+import QueueForm from "../components/QueueForm/QueueForm";
+
 const QueuesPage = () => {
-  return <div>Страница Очереди</div>;
+  
+  return (
+    <>
+      <QueueForm />
+    </>
+  );
+
 };
 
 export default QueuesPage;

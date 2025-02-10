@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.left-panel {
+  width: 400px; /* Фиксированная ширина */
+}
+
+.right-panel {
+  flex: 1; /* Гибкая ширина */
+}

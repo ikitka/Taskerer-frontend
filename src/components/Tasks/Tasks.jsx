@@ -1,3 +1,5 @@
+// Tasks.js
+
 import React, { useEffect, useState } from 'react';
 import useDateStore from '../../stores/dateStore';
 import useQueuesSlice from '../../stores/dataStore/slices/queueSlice';
@@ -6,6 +8,8 @@ import useTasksSlice from '../../stores/dataStore/slices/taskSlice';
 import useActionsSlice from '../../stores/dataStore/slices/actionSlice';
 import TaskItem from './TaskItem';
 import QueueFilter from './QueueFilter';
+import './Tasks.css'; // Импорт CSS-файла
+import generateAndDownloadReport from '../../handlers/generateReport';
 
 const Tasks = () => {
   const { queues, loadQueues } = useQueuesSlice();
@@ -41,7 +45,6 @@ const Tasks = () => {
   useEffect(() => {
     if (tasks && queues) {
       let filtered = [];
-
       if (selectedQueues && selectedQueues.length > 0) {
         filtered = selectedQueues
           .map((queueId) => tasks[queueId])
@@ -50,32 +53,40 @@ const Tasks = () => {
       } else {
         filtered = [];
       }
-
       setFilteredTasks(filtered);
-
       filtered.forEach((task) => {
         loadActionsForTask(task.task_id);
+        console.log("actions", actions);
       });
     }
   }, [tasks, queues, selectedQueues]);
 
+  const handleDownloadReport = () => {
+    generateAndDownloadReport(queues, tasks, actions);
+  };
+
   return (
     <div className="tasks-container">
       {/* Фильтр по очередям */}
-      <QueueFilter
-        queues={queues}
-        onFilterChange={(selected) => setSelectedQueues(selected)}
-      />
+      <div className="queue-filter-container">
+        <QueueFilter
+          queues={queues}
+          onFilterChange={(selected) => setSelectedQueues(selected)}
+        />
+        <button className="task-action-button" onClick={handleDownloadReport} style={{ width: '120px', justifyContent: 'flex-end' }}>
+          Get report
+        </button>
+      </div>
       {/* Список задач */}
-      <div className="task-list">
+      <div className="task-list-container">
         {isLoading ? (
-          <p>Загрузка...</p>
+          <p>Loading...</p>
         ) : filteredTasks.length > 0 ? (
           filteredTasks.map((task) => (
             <TaskItem key={task.task_id} task={task} actions={actions[task.task_id]} />
           ))
         ) : (
-          <p>Задачи не найдены</p>
+          <p>No tasks</p>
         )}
       </div>
     </div>

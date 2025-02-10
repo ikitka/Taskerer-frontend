@@ -7,10 +7,10 @@ import CreateTaskForm from '../components/CreateTaskForm/CreateTaskForm';
 const usePageStore = create((set) => ({
   currentPage: 'tasks',
   setPage: (page) => set({ currentPage: page }),
-  pages: [{id: 'tasks',     title: 'Задачи',    component: TasksPage},
-          {id: 'queues',    title: 'Очереди',   component: QueuesPage},
-          {id: 'tasks-create',    title: 'Создать задачу',   component: CreateTaskForm},
-          {id: 'settings',  title: 'Настройки', component: SettingsPage},
+  pages: [{id: 'tasks',     title: 'Tasks',    component: TasksPage},
+          {id: 'tasks-create',    title: 'Add task',   component: CreateTaskForm},
+          {id: 'queues',    title: 'Queues',   component: QueuesPage},
+          {id: 'settings',  title: 'Settings', component: SettingsPage},
   ],
 }));
 

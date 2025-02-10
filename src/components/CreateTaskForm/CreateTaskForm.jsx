@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import useQueuesSlice from '../../stores/dataStore/slices/queueSlice';
 import useTasksSlice from '../../stores/dataStore/slices/taskSlice';
+import './CreateTaskForm.css'; // Импорт стилей
 
 const CreateTaskForm = () => {
   const [taskName, setTaskName] = useState('');
-  const [taskStartDate, setTaskStartDate] = useState(new Date().toISOString().split('T')[0]); // Today's date in YYYY-MM-DD format
+  const [taskStartDate, setTaskStartDate] = useState(new Date().toISOString().split('T')[0]);
   const [taskEndDate, setTaskEndDate] = useState(() => {
     const today = new Date();
-    today.setDate(today.getDate() + 1); // Add one day to today's date
+    today.setDate(today.getDate() + 1);
     return today.toISOString().split('T')[0];
   });
   const [taskStatus, setTaskStatus] = useState('new');
@@ -20,7 +21,6 @@ const CreateTaskForm = () => {
       alert('Please fill in all fields');
       return;
     }
-
     const taskData = {
       queue_id: selectedQueue,
       task_start_date: taskStartDate,
@@ -28,7 +28,6 @@ const CreateTaskForm = () => {
       task_status: taskStatus,
       task_name: taskName,
     };
-
     try {
       await createTask(selectedQueue, taskData);
       clearForm();
@@ -54,7 +53,7 @@ const CreateTaskForm = () => {
   return (
     <form onSubmit={handleSubmit} className="create-task-form">
       <h3>Create Task</h3>
-      
+
       {/* Queue Selection */}
       <div className="form-group">
         <label>Queue:</label>
@@ -66,7 +65,7 @@ const CreateTaskForm = () => {
           <option value="">Select a queue</option>
           {queues.map(queue => (
             <option key={queue.queue_id} value={queue.queue_id}>
-              {queue.queue_name || `Queue ${queue.queue_id}`}
+              {queue.queue_key || `Queue ${queue.queue_id}`} {/* Отображаем queue_key */}
             </option>
           ))}
         </select>

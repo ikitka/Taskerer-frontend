@@ -19,7 +19,7 @@ const useActionsSlice = create((set, get) => ({
     set((state) => ({
       actions: {
         ...state.actions,
-        [taskId]: state.actions[taskId].filter((action) => action.id !== actionId),
+        [taskId]: state.actions[taskId].filter((action) => action.action_id !== actionId),
       },
     }));
   },
@@ -30,7 +30,7 @@ const useActionsSlice = create((set, get) => ({
       actions: {
         ...state.actions,
         [taskId]: state.actions[taskId].map((action) =>
-          action.id === actionId ? { ...action, ...updatedAction } : action
+          action.action_id === actionId ? { ...action, ...updatedAction } : action
         ),
       },
     }));

@@ -1,0 +1,77 @@
+/* Общий контейнер */
+.multiselect-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Блок выбранных тегов */
+.multiselect-selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 400px;
+}
+
+/* Стиль тега */
+.multiselect-tag {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Ссылка "Выбрать" */
+.multiselect-select-all-link {
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+.multiselect-select-all-link:hover {
+  text-decoration: underline;
+}
+
+/* Попап с выбором очередей */
+.multiselect-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+  padding: 10px;
+  display: none; /* Скрыт по умолчанию */
+}
+
+/* Показываем попап, когда он активен */
+.multiselect-popup.active {
+  display: block;
+}
+
+/* Чекбоксы в попапе */
+.multiselect-popup label {
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.multiselect-popup input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Стиль "Выбрать все" */
+.multiselect-select-all-checkbox {
+  margin-bottom: 10px;
+}

@@ -8,6 +8,8 @@ const actionsApi = {
         method: 'GET'
       });
       const data = await response.json();
+      console.log("data", taskId, data);
+      
       return data;
     } catch (error) { 
       console.error('Error get task actions: ', error);

@@ -1,0 +1,98 @@
+/* Общий контейнер */
+.task-actions-container {
+  margin-top: 16px;
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 4px;
+  /* padding: 8px; */
+}
+
+/* Элемент действия */
+.task-action-item {
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+/* Отображение действия */
+.task-action-display {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #555;
+  font-size: 0.9rem;
+  /* padding: 5px; */
+  gap: 8px; /* Пробел между датой и текстом */
+}
+
+.task-action-display:hover {
+  background-color: #f0f0f0;
+}
+
+/* Блок даты */
+.task-action-date {
+  display: inline-block;
+  color: #ffffff; /* Серый цвет по умолчанию */
+  font-size: 0.80rem;
+  padding: 3px;
+  font-weight: normal;
+  background-color: #bfbfbf;
+  border-radius: 4px;
+}
+
+.task-action-date.active-date {
+  background-color: #77b8ec;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+/* Текст действия */
+.task-action-text {
+  flex: 1;
+  margin-top: -5px;
+}
+
+/* Режим редактирования */
+.task-action-edit-mode input {
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.task-action-edit-mode button {
+  padding: 4px 8px;
+  border: none;
+  background-color: #a8a8a8;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.task-action-edit-mode button:hover {
+  background-color: #919191;
+}
+
+/* Кнопки действий */
+.task-action-button {
+  padding: 8px 12px;
+  margin-right: 5px;
+  border: none;
+  background-color: #2196f3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.task-action-button:hover {
+  background-color: #1e88e5;
+}
+
+.delete-action-button {
+  background-color: #f44336;
+}
+
+.delete-action-button:hover {
+  background-color: #e53935;
+}

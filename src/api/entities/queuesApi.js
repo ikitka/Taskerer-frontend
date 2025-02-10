@@ -55,7 +55,7 @@ const queuesApi = {
         body: JSON.stringify(queue)
       });
       const data = await response.json();
-      return data;
+      return data.data;
     } catch (error) {
       console.error('Error update queue: ', error);
       return [];

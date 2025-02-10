@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import usePageStore from './stores/pagesStore';
 import Header from './ui/Header/Header';
-import useQueuesSlice from './stores/dataStore/slices/queueSlice';
+import './App.css';
 
 function App() {
   const { currentPage, setPage, pages } = usePageStore();
@@ -14,7 +14,7 @@ function App() {
       <Header currentPage={currentPage} setPage={setPage} pages={pages} />
 
       {/* Content */}
-      <main style={{ padding: '20px' }}>
+      <main style={{ paddingTop: '20px' }}>
         {CurrentComponent && <CurrentComponent />}
       </main>
     </div>

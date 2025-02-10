@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Multiselect from '../../ui/Multiselect/Multiselect';
 
 const QueueFilter = ({ queues, onFilterChange }) => {
   const [selectedQueues, setSelectedQueues] = useState([]);
@@ -10,7 +11,7 @@ const QueueFilter = ({ queues, onFilterChange }) => {
     }
   }, [queues]);
 
-  // Функция для обработки изменения чекбоксов очередей
+  // Обработка изменения чекбоксов очередей
   const handleCheckboxChange = (queueId) => {
     if (selectedQueues.includes(queueId)) {
       setSelectedQueues(selectedQueues.filter((id) => id !== queueId));
@@ -19,20 +20,14 @@ const QueueFilter = ({ queues, onFilterChange }) => {
     }
   };
 
-  // Функция для обработки "Выбрать все"
+  // Обработка "Выбрать все"
   const handleSelectAll = () => {
     if (selectedQueues.length === queues.length) {
-      setSelectedQueues([]); // Если все уже выбраны, снимаем все
+      setSelectedQueues([]);
     } else {
-      setSelectedQueues(queues.map((queue) => queue.queue_id.toString())); // Выбираем все
+      setSelectedQueues(queues.map((queue) => queue.queue_id.toString()));
     }
   };
-
-  // Автоматическое обновление состояния "Выбрать все"
-  useEffect(() => {
-    const isAllSelected = selectedQueues.length === queues.length;
-    document.querySelector('#select-all-checkbox').checked = isAllSelected;
-  }, [selectedQueues, queues]);
 
   // При изменении выбранных очередей вызываем callback
   useEffect(() => {
@@ -40,28 +35,12 @@ const QueueFilter = ({ queues, onFilterChange }) => {
   }, [selectedQueues, onFilterChange]);
 
   return (
-    <div className="queue-filter">
-      <h4>Фильтр по очередям</h4>
-      <label>
-        <input
-          type="checkbox"
-          id="select-all-checkbox"
-          checked={selectedQueues.length === queues.length}
-          onChange={handleSelectAll}
-        />
-        Выбрать все
-      </label>
-      {queues.map((queue) => (
-        <label key={queue.queue_id}>
-          <input
-            type="checkbox"
-            checked={selectedQueues.includes(queue.queue_id.toString())}
-            onChange={() => handleCheckboxChange(queue.queue_id.toString())}
-          />
-          {queue.queue_key}
-        </label>
-      ))}
-    </div>
+    <Multiselect
+      queues={queues}
+      selectedQueues={selectedQueues}
+      onSelectAll={handleSelectAll}
+      onCheckboxChange={handleCheckboxChange}
+    />
   );
 };
 
